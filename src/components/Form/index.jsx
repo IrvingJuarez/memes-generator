@@ -29,6 +29,7 @@ function Form(props) {
       />
       <button
         onClick={onDownload}
+        disabled={img && flag ? "" : "true"}
         className={`form__button ${img && flag ? "abled" : null}`}
         type="button"
       >

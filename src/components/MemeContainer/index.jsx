@@ -49,12 +49,12 @@ function MemeContainer({ img, setImg, topText, bottomText }) {
             type="file"
             id="meme__input"
           />
-          <button
+          {/* <button
             className="meme__button meme__button--random-img"
             type="button"
           >
             Choose a random image
-          </button>
+          </button> */}
         </form>
       )}
     </section>

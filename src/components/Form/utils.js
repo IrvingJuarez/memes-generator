@@ -49,9 +49,9 @@ export const handleBottomText = (
   setBottomText
 ) => {
   setBottomText(e.target.value);
-  handleFlag(topText, bottomText, setFlag);
+  handleFlag(topText, e.target.value, setFlag);
 };
 export const handleTopText = (e, topText, bottomText, setFlag, setTopText) => {
   setTopText(e.target.value);
-  handleFlag(topText, bottomText, setFlag);
+  handleFlag(e.target.value, bottomText, setFlag);
 };
