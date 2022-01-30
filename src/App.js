@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react"
+// components
+import { Form } from "./components/Form";
+import { Header } from "./components/Header";
+import { MemeContainer } from "./components/MemeContainer";
+// css
+import "./styles.css";
 
-function App() {
+export default function App() {
+  const [img, setImg] = React.useState(undefined);
+  const [topText, setTopText] = React.useState("");
+  const [bottomText, setBottomText] = React.useState("");
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Form
+        topText={topText}
+        setTopText={setTopText}
+        bottomText={bottomText}
+        setBottomText={setBottomText}
+        img={img}
+      />
+      <MemeContainer
+        img={img}
+        setImg={setImg}
+        topText={topText}
+        bottomText={bottomText}
+      />
     </div>
   );
 }
-
-export default App;

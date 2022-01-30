@@ -1,0 +1,38 @@
+:root {
+  --main-gradient: linear-gradient(90deg, #672280 1.18%, #a626d3 100%);
+  --main-shadow: -1px 0px 9px 0px #9e9d9d;
+  --main-color-strong: #672280;
+  --main-color-weak: #a626d3;
+  --main-font: "Karla", sans-serif;
+  --impact-font: "Alfa Slab One", cursive;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+}
+body {
+  font-size: 1.6rem;
+}
+.App {
+  font-family: var(--main-font);
+  text-align: center;
+}
+
+@media screen and (min-width: 640px) {
+  .form__input {
+    width: 49%;
+  }
+  .form-container {
+    justify-content: space-between;
+  }
+  .meme-container .rectangle {
+    width: 700px;
+  }
+  .meme-container .square {
+    width: 500px;
+  }
+}
