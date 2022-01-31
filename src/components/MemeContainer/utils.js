@@ -9,7 +9,7 @@ export const handleAddingImg = (e, setImg, setLoading) => {
 export const getRatio = (setRatio, setLoading) => {
   setTimeout(() => {
     let ratio;
-    const memeImg = document.querySelector(".meme__uploaded-img");
+    const memeImg = document.querySelector(".meme__final");
     const h = memeImg.height;
     const w = memeImg.width;
 
