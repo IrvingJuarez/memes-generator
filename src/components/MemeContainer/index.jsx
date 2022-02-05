@@ -2,6 +2,7 @@
 import React from "react";
 import { faCamera } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Draggable from 'react-draggable';
 // css
 import "./memeContainer.css";
 // utils
@@ -46,8 +47,12 @@ function MemeContainer({ appState, setAppState }){
               alt={appState.img.name}
             />
             <div className={`meme__overlapping ${memeContainerState.ratio && `${memeContainerState.ratio}`}`}>
-              <p style={{width: `${appState.textWidth}%`}} className="meme__text meme__top-text">{appState.topText}</p>
-              <p style={{width: `${appState.textWidth}%`}} className="meme__text meme__bottom-text">{appState.bottomText}</p>
+              <Draggable bounds=".meme__final" axis="y">
+                <p style={{width: `${appState.textWidth}%`}} className="meme__text meme__top-text">{appState.topText}</p>
+              </Draggable>
+              <Draggable bounds=".meme__final" axis="y">
+                <p style={{width: `${appState.textWidth}%`}} className="meme__text meme__bottom-text">{appState.bottomText}</p>
+              </Draggable>
             </div>
           </div>
         </React.Fragment>

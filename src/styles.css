@@ -37,7 +37,7 @@ body {
   }
   .meme__text {
     /* width: 70%; */
-    margin: 15px auto;
+    /* margin: 15px auto; */
     font-size: 4.5rem;
   }
 }
