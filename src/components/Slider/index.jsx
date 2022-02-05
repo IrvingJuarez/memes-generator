@@ -35,7 +35,7 @@ function Slider({ appState, setAppState }){
 
   React.useEffect(() => {
     setGrids()
-  }, [])
+  }, [appState.img])
 
   return(
     <article className="slider">
