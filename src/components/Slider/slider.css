@@ -24,7 +24,6 @@
   background-color: #C4C4C4;
 }
 .slider__bar--main{
-  width: 70%;
   background: var(--main-gradient);
   height: inherit;
   border-radius: inherit;
@@ -32,12 +31,12 @@
 .slider__handler{
   position: absolute;
   display: block;
-  width: 15px;
-  height: 15px;
-  left: calc(70% - 7.5px);
-  top: calc(50% - 7.5px);
+  width: 17px;
+  height: 17px;
+  left: calc(70% - 8.5px);
+  top: calc(50% - 8.5px);
   background-color: var(--main-color-weak);
   border-radius: 3px;
   border: 1px solid white;
-  cursor: pointer;
+  cursor: move;
 }

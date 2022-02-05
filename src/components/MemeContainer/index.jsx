@@ -46,8 +46,8 @@ function MemeContainer({ appState, setAppState }){
               alt={appState.img.name}
             />
             <div className={`meme__overlapping ${memeContainerState.ratio && `${memeContainerState.ratio}`}`}>
-              <p className="meme__text meme__top-text">{appState.topText}</p>
-              <p className="meme__text meme__bottom-text">{appState.bottomText}</p>
+              <p style={{width: `${appState.textWidth}%`}} className="meme__text meme__top-text">{appState.topText}</p>
+              <p style={{width: `${appState.textWidth}%`}} className="meme__text meme__bottom-text">{appState.bottomText}</p>
             </div>
           </div>
         </React.Fragment>

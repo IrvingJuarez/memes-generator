@@ -11,7 +11,9 @@ export default function App() {
   const [appState, setAppState] = React.useState({
     img: undefined,
     topText: "",
-    bottomText: ""
+    bottomText: "",
+    textWidth: 70,
+    gridValues: [5, 5]
   })
 
   return (
@@ -21,7 +23,7 @@ export default function App() {
       <MemeContainer appState={appState} setAppState={setAppState}/>
       {appState.img && (
         <React.Fragment>
-          <Slider />
+          <Slider appState={appState} setAppState={setAppState} />
         </React.Fragment>
       )}
     </div>
