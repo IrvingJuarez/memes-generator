@@ -6,15 +6,10 @@ import { MemeContainer } from "./components/MemeContainer";
 import { Slider } from "./components/Slider";
 // css
 import "./styles.css";
+import { initialState } from "./utils";
 
 export default function App() {
-  const [appState, setAppState] = React.useState({
-    img: undefined,
-    topText: "",
-    bottomText: "",
-    textWidth: 70,
-    gridValues: [5, 5]
-  })
+  const [appState, setAppState] = React.useState(initialState())
 
   return (
     <div className="App">
