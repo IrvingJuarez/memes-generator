@@ -1,8 +1,7 @@
 import html2canvas from "html2canvas";
 
-export const onDownload = () => {
+export const handleDownload = (setIsFulfilled) => {
   html2canvas(document.querySelector(".meme__final")).then((canvas) => {
-    // document.body.appendChild(canvas);
     let lnk = document.createElement("a"),
       e;
     lnk.download = "meme.png";
@@ -31,5 +30,10 @@ export const onDownload = () => {
     } else if (lnk.fireEvent) {
       lnk.fireEvent("onclick");
     }
+  }).then(() => {
+    setIsFulfilled(true)
+  }, () => {
+    // todo: handle the error
+    console.log("Rejected")
   });
 };
