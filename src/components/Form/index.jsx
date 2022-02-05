@@ -6,17 +6,25 @@ import { handleDownload } from "./utils";
 function Form({ appState, setAppState }){
   const [flag, setFlag] = React.useState(false);
   const [isFulfilled, setIsFulfilled] = React.useState(false)
+  const { topText, bottomText, img } = appState;
+
+  const onDownload = () => handleDownload(setIsFulfilled);
   const handleText = (e) => {
     const {value, name} = e.target
     setAppState(prevState => ({
       ...prevState,
       [name]: value
     }))
-    const newFlagValue = (appState.topText || appState.bottomText) ? true : false
-    setFlag(newFlagValue)
+    handleFlag(value, name)
   }
-  const onDownload = () => {
-    handleDownload(setIsFulfilled)
+  const handleFlag = (value, name) => {
+    let newFlagValue
+    if(name === "topText"){
+      newFlagValue = (value || bottomText) ? true : false
+    }else{
+      newFlagValue = (value || topText) ? true : false
+    }
+    setFlag(newFlagValue)
   }
   const onRemove = () => {
     setIsFulfilled(false)
@@ -31,7 +39,7 @@ function Form({ appState, setAppState }){
   return(
     <section className="form-container">
       <input
-        value={appState.topText}
+        value={topText}
         onChange={handleText}
         className="form__input"
         type="text"
@@ -40,7 +48,7 @@ function Form({ appState, setAppState }){
         name="topText"
       />
       <input
-        value={appState.bottomText}
+        value={bottomText}
         onChange={handleText}
         className="form__input"
         type="text"
@@ -50,8 +58,8 @@ function Form({ appState, setAppState }){
       />
       <button
         onClick={isFulfilled ? onRemove : onDownload}
-        disabled={appState.img && flag ? "" : true}
-        className={`form__button ${appState.img && flag ? "abled" : null}`}
+        disabled={img && flag ? "" : true}
+        className={`form__button ${img && flag ? "abled" : null}`}
         type="button"
       >
         {isFulfilled ? "Remove media" : "Download image"}
