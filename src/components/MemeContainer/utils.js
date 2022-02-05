@@ -1,24 +1,13 @@
-// updaters
-export const handleAddingImg = (e, setImg, setLoading) => {
-  if (e.target.files.length > 0) {
-    setImg(e.target.files[0]);
-    setLoading(true);
-  }
-};
-// utils
-export const getRatio = (setRatio, setLoading) => {
+export const getRatio = (setMemeContainerState) => {
   setTimeout(() => {
     let ratio;
     const memeImg = document.querySelector(".meme__final");
     const h = memeImg.height;
     const w = memeImg.width;
-
-    if (h / w < 0.9) {
-      ratio = "rectangle";
-    } else {
-      ratio = "square";
-    }
-    setLoading(false);
-    setRatio(ratio);
-  }, 1000);
-};
+    ratio = (h / w < 0.9) ? "rectangle" : "square"
+    setMemeContainerState({
+      loading: false,
+      ratio: ratio
+    })
+  }, 1000)
+}

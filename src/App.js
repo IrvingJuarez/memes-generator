@@ -7,26 +7,17 @@ import { MemeContainer } from "./components/MemeContainer";
 import "./styles.css";
 
 export default function App() {
-  const [img, setImg] = React.useState(undefined);
-  const [topText, setTopText] = React.useState("");
-  const [bottomText, setBottomText] = React.useState("");
+  const [appState, setAppState] = React.useState({
+    img: undefined,
+    topText: "",
+    bottomText: ""
+  })
 
   return (
     <div className="App">
       <Header />
-      <Form
-        topText={topText}
-        setTopText={setTopText}
-        bottomText={bottomText}
-        setBottomText={setBottomText}
-        img={img}
-      />
-      <MemeContainer
-        img={img}
-        setImg={setImg}
-        topText={topText}
-        bottomText={bottomText}
-      />
+      <Form appState={appState} setAppState={setAppState}/>
+      <MemeContainer appState={appState} setAppState={setAppState}/>
     </div>
   );
 }

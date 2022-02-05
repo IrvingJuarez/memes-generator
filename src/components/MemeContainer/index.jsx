@@ -5,37 +5,51 @@ import { faCamera } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./memeContainer.css";
 // utils
-import { getRatio, handleAddingImg } from "./utils";
+import { getRatio } from "./utils";
 
-function MemeContainer({ img, setImg, topText, bottomText }) {
-  const [loading, setLoading] = React.useState(false);
-  const [ratio, setRatio] = React.useState(undefined);
-  const onAddingImg = (e) => handleAddingImg(e, setImg, setLoading);
+function MemeContainer({ appState, setAppState }){
+  const [memeContainerState, setMemeContainerState] = React.useState({
+    loading: false,
+    ratio: undefined
+  })
+  const handleAddingImg = (e) => {
+    const {files} = e.target
+    if (files.length > 0) {
+      setMemeContainerState(prevState => ({
+        ...prevState,
+        loading: true
+      }))
+      setAppState(prevState => ({
+        ...prevState,
+        img: files[0]
+      }))
+    }
+  };
 
   React.useEffect(() => {
-    if (loading) {
-      getRatio(setRatio, setLoading);
+    if (memeContainerState.loading) {
+      getRatio(setMemeContainerState);
     }
-  }, [loading]);
+  }, [memeContainerState.loading]);
 
   return (
-    <section className={`meme-container ${img && "hidden"}`}>
-      {img ? (
+    <section className={`meme-container ${appState.img && "hidden"}`}>
+      {appState.img ? (
         <React.Fragment>
           <div className="meme__final">
             <img
               className={`meme__uploaded-img 
-                ${loading && "nonvisible"} 
-                ${ratio && `${ratio}`}`}
-              src={URL.createObjectURL(img)}
-              alt={img.name}
+                ${memeContainerState.loading && "nonvisible"} 
+                ${memeContainerState.ratio && `${memeContainerState.ratio}`}`}
+              src={URL.createObjectURL(appState.img)}
+              alt={appState.img.name}
             />
-            <div className={`meme__overlapping ${ratio && `${ratio}`}`}>
-              <p className="meme__text meme__top-text">{topText}</p>
-              <p className="meme__text meme__bottom-text">{bottomText}</p>
+            <div className={`meme__overlapping ${memeContainerState.ratio && `${memeContainerState.ratio}`}`}>
+              <p className="meme__text meme__top-text">{appState.topText}</p>
+              <p className="meme__text meme__bottom-text">{appState.bottomText}</p>
             </div>
           </div>
-          {loading && <div className="loader"></div>}
+          {memeContainerState.loading && <div className="loader"></div>}
         </React.Fragment>
       ) : (
         <form className="meme__form" encType="multipart/form-data">
@@ -44,7 +58,7 @@ function MemeContainer({ img, setImg, topText, bottomText }) {
             <h3>Choose an image</h3>
           </label>
           <input
-            onChange={onAddingImg}
+            onChange={handleAddingImg}
             className="meme__input nonvisible"
             type="file"
             id="meme__input"
