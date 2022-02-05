@@ -1,8 +1,8 @@
 // React
 import React from "react";
-// css
 import { faCamera } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// css
 import "./memeContainer.css";
 // utils
 import { getRatio } from "./utils";
@@ -37,6 +37,7 @@ function MemeContainer({ appState, setAppState }){
       {appState.img ? (
         <React.Fragment>
           <div className="meme__final">
+            {memeContainerState.loading && <div className="loader"></div>}
             <img
               className={`meme__uploaded-img 
                 ${memeContainerState.loading && "nonvisible"} 
@@ -49,7 +50,6 @@ function MemeContainer({ appState, setAppState }){
               <p className="meme__text meme__bottom-text">{appState.bottomText}</p>
             </div>
           </div>
-          {memeContainerState.loading && <div className="loader"></div>}
         </React.Fragment>
       ) : (
         <form className="meme__form" encType="multipart/form-data">
