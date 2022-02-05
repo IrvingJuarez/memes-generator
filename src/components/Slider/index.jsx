@@ -7,10 +7,15 @@ import { getGrid } from './utils';
 function Slider({ appState, setAppState }){
   const [x, setX] = React.useState(0)
   const [gridValue, setGridValue] = React.useState(0)
-  const setGrids = () => setAppState(prevState => ({
-    ...prevState,
-    gridValues: grids
-  }))
+  const setGrids = () => {
+    const grids = getGrid()
+    setAppState(prevState => ({
+      ...prevState,
+      gridValues: grids
+    }))
+    setGridValue(grids[0])
+  } 
+    
   const onDrag = (data) => {
     let newTextWidthValue;
     if(data.x >= x && appState.textWidth >= 100){
@@ -29,9 +34,7 @@ function Slider({ appState, setAppState }){
   }
 
   React.useEffect(() => {
-    const grids = getGrid()
     setGrids()
-    setGridValue(grids[0])
   }, [])
 
   return(
