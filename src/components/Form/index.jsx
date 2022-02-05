@@ -1,5 +1,6 @@
 // React
 import React from "react";
+import { initialState } from "../../utils";
 import "./form.css";
 import { handleDownload } from "./utils";
 
@@ -29,11 +30,7 @@ function Form({ appState, setAppState }){
   const onRemove = () => {
     setIsFulfilled(false)
     setFlag(false)
-    setAppState({
-      img: undefined,
-      topText: "",
-      bottomText: ""
-    })
+    setAppState(initialState())
   }
 
   return(
