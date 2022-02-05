@@ -1,42 +1,48 @@
 // React
 import React from "react";
 import "./form.css";
-import { handleBottomText, handleTopText, onDownload } from "./utils";
+import { onDownload } from "./utils";
 
-function Form(props) {
-  const { topText, setTopText, bottomText, setBottomText, img } = props;
+function Form({ appState, setAppState }){
   const [flag, setFlag] = React.useState(false);
+  const handleText = (e) => {
+    const {value, name} = e.target
+    setAppState(prevState => ({
+      ...prevState,
+      [name]: value
+    }))
+    const newFlagValue = (appState.topText || appState.bottomText) ? true : false
+    setFlag(newFlagValue)
+  }
 
-  return (
+  return(
     <section className="form-container">
       <input
-        onChange={(e) =>
-          handleTopText(e, topText, bottomText, setFlag, setTopText)
-        }
+        onChange={handleText}
         className="form__input"
         type="text"
         id="top-text"
         placeholder="Top text"
+        name="topText"
       />
       <input
-        onChange={(e) =>
-          handleBottomText(e, topText, bottomText, setFlag, setBottomText)
-        }
+        onChange={handleText}
         className="form__input"
         type="text"
         id="bottom-text"
         placeholder="Bottom text"
+        name="bottomText"
       />
       <button
         onClick={onDownload}
-        disabled={img && flag ? "" : true}
-        className={`form__button ${img && flag ? "abled" : null}`}
+        disabled={appState.img && flag ? "" : true}
+        className={`form__button ${appState.img && flag ? "abled" : null}`}
         type="button"
       >
         Download image
       </button>
     </section>
-  );
+  )
 }
 
 export { Form };
