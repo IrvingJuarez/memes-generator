@@ -7,14 +7,6 @@ import { getGrid } from './utils';
 function Slider({ appState, setAppState }){
   const [x, setX] = React.useState(0)
   const [gridValue, setGridValue] = React.useState(0)
-  const setGrids = () => {
-    const grids = getGrid()
-    setAppState(prevState => ({
-      ...prevState,
-      gridValues: grids
-    }))
-    setGridValue(grids[0])
-  } 
     
   const onDrag = (data) => {
     let newTextWidthValue;
@@ -34,8 +26,13 @@ function Slider({ appState, setAppState }){
   }
 
   React.useEffect(() => {
-    setGrids()
-  }, [appState.img])
+    const grids = getGrid()
+    setAppState(prevState => ({
+      ...prevState,
+      gridValues: grids
+    }))
+    setGridValue(grids[0])
+  }, [setAppState])
 
   return(
     <article className="slider">
