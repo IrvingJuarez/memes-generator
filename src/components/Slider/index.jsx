@@ -5,7 +5,7 @@ import "./slider.css";
 import { getGrid } from './utils';
 
 function Slider({ title, name, measuredIn, appState, setAppState }){
-  const [initialPercentage, setInitialPercentage] = React.useState(0)
+  const [initialPercentage, setInitialPercentage] = React.useState(appState[name])
   const {gridValues} = appState;
   const [x, setX] = React.useState(0)
   const [gridValue, setGridValue] = React.useState(0)
@@ -36,7 +36,6 @@ function Slider({ title, name, measuredIn, appState, setAppState }){
       gridValues: grids
     }))
     setGridValue(grids[0])
-    setInitialPercentage(appState[name])
   }, [setAppState])
 
   return(

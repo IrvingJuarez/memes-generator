@@ -10,7 +10,6 @@ import { initialState } from "./utils";
 
 export default function App() {
   const [appState, setAppState] = React.useState(initialState())
-  const {textWidth, textSize} = appState;
 
   return (
     <div className="App">
