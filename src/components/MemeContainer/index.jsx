@@ -9,6 +9,7 @@ import "./memeContainer.css";
 import { getRatio } from "./utils";
 
 function MemeContainer({ appState, setAppState }){
+  const {textSize, textWidth} = appState;
   const [memeContainerState, setMemeContainerState] = React.useState({
     loading: false,
     ratio: undefined
@@ -48,10 +49,10 @@ function MemeContainer({ appState, setAppState }){
             />
             <div className={`meme__overlapping ${memeContainerState.ratio && `${memeContainerState.ratio}`}`}>
               <Draggable bounds=".meme__final" axis="y">
-                <p style={{width: `${appState.textWidth}%`}} className="meme__text meme__top-text">{appState.topText}</p>
+                <p style={{width: `${textWidth}%`, fontSize: `${textSize}px`}} className="meme__text meme__top-text">{appState.topText}</p>
               </Draggable>
               <Draggable bounds=".meme__final" axis="y">
-                <p style={{width: `${appState.textWidth}%`}} className="meme__text meme__bottom-text">{appState.bottomText}</p>
+                <p style={{width: `${textWidth}%`, fontSize: `${textSize}px`}} className="meme__text meme__bottom-text">{appState.bottomText}</p>
               </Draggable>
             </div>
           </div>
