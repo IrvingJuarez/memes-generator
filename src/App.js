@@ -10,6 +10,7 @@ import { initialState } from "./utils";
 
 export default function App() {
   const [appState, setAppState] = React.useState(initialState())
+  const {textWidth, textSize} = appState;
 
   return (
     <div className="App">
@@ -18,7 +19,8 @@ export default function App() {
       <MemeContainer appState={appState} setAppState={setAppState}/>
       {appState.img && (
         <React.Fragment>
-          <Slider appState={appState} setAppState={setAppState} />
+          <Slider title="Text width" name="textWidth" measuredIn="%" appState={appState} setAppState={setAppState} />
+          <Slider title="Text size" name="textSize" measuredIn="px" appState={appState} setAppState={setAppState} />
         </React.Fragment>
       )}
     </div>
