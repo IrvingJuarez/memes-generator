@@ -36,7 +36,7 @@ function Slider({ title, name, measuredIn, appState, setAppState }){
       gridValues: grids
     }))
     setGridValue(grids[0])
-  }, [setAppState])
+  }, [setAppState, setInitialPercentage])
 
   return(
     <article className="slider">
