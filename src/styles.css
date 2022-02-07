@@ -35,9 +35,4 @@ body {
   .meme-container .square {
     width: 500px;
   }
-  .meme__text {
-    /* width: 70%; */
-    /* margin: 15px auto; */
-    font-size: 4.5rem;
-  }
 }
